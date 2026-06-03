@@ -1,13 +1,4 @@
 # Therapy Routing System
-
-A living patient routing system, not a one-shot matcher. You upload the patient
-and provider files. Patients with enough data are routed to a provider as a
-pending suggestion. Each provider opens their profile, reads why each patient
-fits, and adds or declines them. Caseloads update live and feed back into who
-gets matched next. Patients without enough data wait in a separate queue.
-
-Runs fully offline out of the box. The Anthropic and AWS keys are optional.
-
 ---
 
 ## Quick start
