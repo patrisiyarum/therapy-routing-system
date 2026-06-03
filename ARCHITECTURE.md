@@ -1,4 +1,4 @@
-# Therapy routing — full architecture (preset)
+# Therapy routing
 
 **Assumption:** All data lives in **Medplum** (patients, providers, insurance, schedules, preferred services).  
 **Goal:** Match each patient to the best providers; **preferred-service** patients score higher than patients who only meet the provider’s basic discipline.
