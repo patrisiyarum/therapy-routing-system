@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="top">
+  <div>
+    <div class="eyebrow">Therapy Operations</div>
+    <h1 style="font-size:36px;margin-top:6px">Routing dashboard</h1>
+    <p class="lede">Upload the patient and provider files. Patients with enough data are routed to a
+      provider as a pending suggestion. Providers add or decline them, and caseloads update live.</p>
+  </div>
+  <div class="badges">
+    <span class="badge"><span class="dot {{ 'on' if keys.anthropic else 'off' }}"></span>Anthropic {{ 'on' if keys.anthropic else 'off' }}</span>
+    <span class="badge"><span class="dot {{ 'on' if keys.aws else 'off' }}"></span>AWS {{ 'on' if keys.aws else 'offline' }}</span>
+  </div>
+</div>
+
+{% if uploaded %}
+<p class="note" style="margin-top:14px;padding:12px 14px;background:#e8f5f0;border:1px solid #b8ddd0;border-radius:10px">
+  <b>Upload complete.</b> Loaded {{ upload_n }} patients and {{ upload_p }} providers — scroll down for results.
+  The file names above will look empty; that is normal after upload.
+</p>
+{% endif %}
+{% if request.query_params.get('rebalanced') == '1' %}
+<p class="note" style="margin-top:14px;padding:12px 14px;background:#e8f5f0;border:1px solid #b8ddd0;border-radius:10px">
+  <b>Queues rebalanced.</b> Open offers were redistributed fairly across Pending 1st providers.
+</p>
+{% endif %}
+
+<div class="card" style="margin-top:18px">
+  <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+    <div style="display:flex;gap:18px;flex-wrap:wrap">
+      <label class="field" style="flex:1;min-width:280px"><span class="lbl">Patient file (.csv or .xlsx)</span>
+        <input type="file" name="patients_file" accept=".csv,.xlsx,.xls" required></label>
+      <label class="field" style="flex:1;min-width:280px"><span class="lbl">Provider file (.csv or .xlsx)</span>
+        <input type="file" accept=".csv,.xlsx,.xls" name="providers_file" required></label>
+    </div>
+    <p class="note" style="margin:10px 0 0">First upload can take up to a minute while data is cleaned and matched. Do not refresh the page — wait for the dashboard to reload.</p>
+    <button class="go" id="upload-btn" type="submit">Upload and route &rarr;</button>
+    <p id="upload-wait" class="note" style="display:none;margin-top:10px"><b>Working…</b> routing patients. Please wait.</p>
+  </form>
+</div>
+<script>
+document.getElementById("upload-form")?.addEventListener("submit", function () {
+  var btn = document.getElementById("upload-btn");
+  var wait = document.getElementById("upload-wait");
+  if (btn) { btn.disabled = true; btn.textContent = "Uploading…"; }
+  if (wait) wait.style.display = "block";
+});
+</script>
+
+{% if loaded %}
+<h2 class="sectitle">Where patients landed</h2>
+<div class="grid">
+  <div class="stat"><div class="v">{{ buckets.patients }}</div><div class="k">Patients</div></div>
+  <div class="stat alt"><div class="v">{{ buckets.suggested }}</div><div class="k">Suggested</div></div>
+  <div class="stat"><div class="v">{{ buckets.accepted }}</div><div class="k">Accepted</div></div>
+  <div class="stat warn"><div class="v"><a href="/needs-info">{{ buckets.needs_info }}</a></div><div class="k">Needs info</div></div>
+  <div class="stat"><div class="v">{{ buckets.manual_review }}</div><div class="k">Manual review</div></div>
+</div>
+<p class="note">Suggested means a provider has been picked and is waiting to respond. Accepted means a provider added them.
+  Needs info are patients missing location, service, or billing. <a href="/needs-info">See the needs-info queue &rarr;</a></p>
+
+{% if review %}
+<h2 class="sectitle">Providers to review ({{ review|length }})</h2>
+<p class="note">Their <b>Accepting Patients</b> (Y/N) column contradicts their lifecycle state, so the data is unreliable. They are held out of matching until someone fixes the record.</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Provider</th><th>Discipline</th><th>Region</th><th>Accepting</th><th>Lifecycle</th><th>Conflict</th></tr></thead>
+  <tbody>{% for v in review %}<tr>
+    <td><b>{{ v.name }}</b></td><td>{{ v.discipline }}</td><td>{{ v.region }}</td>
+    <td>{{ v.accepting }}</td><td>{{ v.lifecycle }}</td>
+    <td><span class="pill miss">{{ v.reason }}</span></td>
+  </tr>{% endfor %}</tbody>
+</table></div>
+{% endif %}
+
+<div class="top" style="margin-top:26px;align-items:center">
+  <h2 style="font-size:20px">Providers</h2>
+  {% if loaded %}
+  <form action="/rebalance" method="post" style="margin:0">
+    <button class="go" type="submit" style="font-size:14px;padding:8px 14px">Rebalance pending offers</button>
+  </form>
+  {% endif %}
+</div>
+<p class="note">Active offers spread across Pending 1st providers in the same area (nearest few within ~20 mi), not all to one person.</p>
+<div class="tablewrap">
+  <table>
+    <thead><tr><th>Provider</th><th>Discipline</th><th>Region</th><th>Accepting</th><th>Lifecycle</th><th>Caseload</th><th></th><th>Pending</th><th></th></tr></thead>
+    <tbody>
+    {% for r in providers %}
+      <tr>
+        <td><a class="openlink" href="/provider/{{ r.id }}"><b>{{ r.name }}</b></a></td>
+        <td>{{ r.discipline }}</td>
+        <td>{{ r.region }}</td>
+        <td>{% if r.accepting=='Y' %}<span class="pill inp">Y</span>{% elif r.accepting=='N' %}<span class="pill miss">N</span>{% else %}<span class="meta">{{ r.accepting }}</span>{% endif %}</td>
+        <td>{% if r.lifecycle_raw=='pending 1st' %}<span class="pill prio">{{ r.lifecycle }}</span>{% else %}{{ r.lifecycle }}{% endif %}</td>
+        <td style="white-space:nowrap">
+          {{ r.accepted }} / {{ r.capacity }}{% if r.fill_to_80 %} <span class="meta">(80% of {{ r.stated_capacity }})</span>{% endif %}
+        </td>
+        <td style="width:150px"><div class="bar"><i style="width:{{ (100*r.accepted/r.capacity) if r.capacity else 0 }}%"></i></div></td>
+        <td>{{ r.pending }}</td>
+        <td><a class="openlink" href="/provider/{{ r.id }}">Open &rarr;</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% if manual %}
+<h2 class="sectitle">Manual review ({{ manual|length }})</h2>
+<p class="note">Complete patients that no eligible provider could take (every option declined, or none in their state).</p>
+<div class="tablewrap"><table>
+  <thead><tr><th>Patient</th><th>Service</th><th>Location</th><th>Times declined</th></tr></thead>
+  <tbody>{% for m in manual %}<tr><td><b>{{ m.name }}</b></td><td>{{ m.service }}</td><td>{{ m.city }}, {{ m.state }}</td><td>{{ m.declined }}</td></tr>{% endfor %}</tbody>
+</table></div>
+{% endif %}
+{% endif %}
+{% endblock %}

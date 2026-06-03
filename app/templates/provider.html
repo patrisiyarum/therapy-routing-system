@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block body %}
+<a class="navlink" href="/">&larr; Dashboard</a>
+
+<div class="top" style="margin-top:14px">
+  <div>
+    <div class="eyebrow">Provider profile</div>
+    <h1 style="font-size:32px;margin-top:6px">{{ p.name }}</h1>
+    <p class="meta" style="margin-top:6px">{{ p.discipline }} · {{ p.region }} ·
+      {% if p.lifecycle_raw=='pending 1st' %}<span class="pill prio">{{ p.lifecycle }}</span>{% else %}{{ p.lifecycle }}{% endif %}</p>
+  </div>
+  <div class="card" style="padding:16px 20px;min-width:230px">
+    <div class="k" style="font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em;text-transform:uppercase">Caseload</div>
+    <div style="font-family:Fraunces,serif;font-size:30px;font-weight:700;color:var(--teal-dd)">{{ p.accepted }} <span style="font-size:18px;color:var(--muted)">/ {{ p.stated_capacity }}</span></div>
+    {% if p.fill_to_80 %}<div class="meta" style="margin-top:4px">80% target is {{ p.capacity }} — you can still add patients up to {{ p.stated_capacity }}</div>
+    {% elif p.lifecycle_raw=='at capacity' %}<div class="meta" style="margin-top:4px">At full capacity</div>{% endif %}
+    <div class="bar" style="margin-top:8px"><i style="width:{{ (100*p.accepted/p.stated_capacity) if p.stated_capacity else 0 }}%"></i></div>
+    <div class="meta" style="margin-top:7px">{{ p.pending }} waiting on your response</div>
+  </div>
+</div>
+
+<h2 class="sectitle">Patients suggested for you</h2>
+{% if suggestions %}
+  {% for s in suggestions %}
+  <div class="scard {{ 'golden' if s.task.golden else '' }}">
+    <div class="srow">
+      <div>
+        <div style="font-size:17px;font-family:Fraunces,serif;font-weight:600">
+          {{ s.patient.name }}
+          {% if s.task.golden %}<span class="pill gold">Golden</span>{% endif %}
+        </div>
+        <div class="meta" style="margin-top:3px">
+          {{ s.patient.service }} · {{ s.patient.city }}, {{ s.patient.state }} · {{ s.patient.billing|title }}
+          {% if s.task.mode=='in person' %}· <span class="pill inp">{{ s.task.distance_mi }} mi, in person</span>
+          {% elif s.task.mode=='telehealth' %}· <span class="pill tele">telehealth</span>{% endif %}
+          · <span class="meta">48h to accept</span>
+        </div>
+      </div>
+      <div style="text-align:right"><div class="score">{{ s.task.score }}</div><div class="meta">match score</div></div>
+    </div>
+    <div class="actions">
+      <form action="/provider/{{ p.id }}/accept" method="post">
+        <input type="hidden" name="task_id" value="{{ s.task.id }}">
+        <button class="btn add" type="submit">Add patient</button>
+      </form>
+      <form action="/provider/{{ p.id }}/decline" method="post" class="reasonbox">
+        <input type="hidden" name="task_id" value="{{ s.task.id }}">
+        <input type="text" name="reason" placeholder="Reason for declining (optional)">
+        <button class="btn decline" type="submit">Decline</button>
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+{% else %}
+  <div class="card"><p class="meta" style="margin:0">No patients waiting. Everyone here has been added or declined.</p></div>
+{% endif %}
+{% endblock %}

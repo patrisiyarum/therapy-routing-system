@@ -1,0 +1,81 @@
+Name,Type,Region,Accepting Patients,Go Live,Caseload Capacity ,Address,Lifecycle State,Range (min),Radius (mi),Sign month,Note
+Valerie Hannigan,SLP,NOVA,Y,Active,30,No Address on file,4. Steady state,,,Sep 2024,
+Vanessa Talbott,SLP,NOVA,Y,Active,15,"108 Cameron Pk Ct, Alexandria, VA 22304",4. Steady state,,,Sep 2024,
+Hsin-I Huang,SLP,NOVA,Y,Active,25,"42420 Spinks Ferry Rd., Leesburg, VA 20176",4. Steady state,,,Dec 2024,
+Zora McFarlane-Blake,SLP,NOVA,N,Active,5,"6600 Indian Trail Court, Alexandria, VA 22310",4. Steady state,,,April 2025,
+Alyssa Walker,SLP,NOVA,N,Active,40,"2025 Fulton Place, Reston, VA",4. Steady state,,,May 2025,
+Lauren Benito,SLP,NOVA,,Active,20,"1331 4th St SE Apt 1011, Washington D.C. 20003",1. Not live,,,May 2025,
+Madison Sunderland,SLP,NOVA,Y,Active,40,"13829 Litespeed Way Gainesville, VA 20155",4. Steady state,,,May 2025,
+Amari Pina,SLP,NOVA,Y,May,15,"8130 Mccauley Way Apt 1205 Lorton, VA 22079",3. Fill to 80%,,,June 2025,
+Tyiesha Elliott,SLP,NOVA,Y,Active,10,"4950 Westcroft Blvd, Fairfax, VA 20151",3. Fill to 80%,,,July 2025,
+Jackie Salzano,SLP,NOVA,Y,Active,5,"136 W Falls Station Blvd Apt 837, Falls Church, VA 22046",2. Pending 1st,,,November 2025,
+Jennifer Fraczkiewicz Taylor,SLP,NOVA,Y,Active,10,"12208 Captains Court, Woodbridge, VA 22192",3. Fill to 80%,,,November 2025,
+Kimberli Ng,SLP,NOVA,Y,Active,15,"2700 Dorr Avenue Apt 923, Fairfax, VA 22031",4. Steady state,,,December 2025,
+Rachel Kelly,SLP,NOVA,,August,5,"12135 Purple Sage Ct, Reston, VA 20194",1. Not live,,,January 2026,
+Sarah Davis,SLP,NOVA,N,May,15,"1781 Sugar Hill Dr. Apt 101, Woodbridge, VA 22192",3. Fill to 80%,,,January 2026,
+Carolyn DeCredico,SLP,RVA,Y,Active,20,"523 Bel Crest Terrace, Midlothian, VA 23113",3. Fill to 80%,30,10,January 2026,
+Melissa Eich,SLP,Other VA,,June,10,"209 Pineridge Lane, Charlottesville, VA 22911",1. Not live,25,12,January 2026,
+Paige Parker,SLP,RVA,Y,Active,20,"15466 Foxvale Way, Midlothian, VA 23112",3. Fill to 80%,20,8,January 2026,
+Valerie Calderon,SLP,NOVA,Y,May,10,"24483 Amherst Forest Terrace, Aldie, VA 20105",2. Pending 1st,,,February 2026,
+Shana Kilcawley,SLP,NOVA,,June,5,"Arlington, VA – No address",1. Not live,,,February 2026,
+Nikki Nazareno,SLP,NOVA,N,Active,10,"8935 Tarragon Ct, Manassas, VA 20110",3. Fill to 80%,,,February 2026,
+Becky Conti,OT,Other VA,Y,May,10,"Waynesboro, VA 22980",2. Pending 1st,45,18,February 2026,About to retire. Doesn't have full alignment on her expectations for the summer. Need to reconfirm with her
+Emily Cleveland,OT,Chicago,,May,10,"2 E Erie Street Apt 3114, Chicago, IL",2. Pending 1st,10,,February 2026,
+Monique Bradley,SLP,VA Beach,Y,May,20,"2114 Willow Point Arch, Chesapeake, VA 23320",3. Fill to 80%,10,4,February 2026,
+Rachel Lee,SLP,VA Beach,,July,20,"Virginia Beach, VA - No Address",1. Not live,,10,February 2026,
+Lea Angelica Tanseco,SLP,NOVA,,August,15,"5440 Adamstown Commons Dr, Adamstown, MD 21710",1. Not live,,,March 2026,
+Natalia Cubillos,OT,NOVA,Y,May,4,"45443 Baggett Ter, Sterling, VA 20166",3. Fill to 80%,,,March 2026,1 slot Thurs + 3 slots Wed to start; ready now
+Lisa Gregory,OT,NOVA,Y,May,5,"99 Driftwood Dr., Gerrardstown, WV 25420",2. Pending 1st,,,March 2026,"Get a couple and go with the flow"""
+Eugene Hong,OT,NOVA,Y,May,30,"2251 Pimmit Drive Apt. #321, Falls Church, VA 22043",2. Pending 1st,,,March 2026,
+Sierra Desorme,OT,NOVA,,June,6,"2400 24th Road South Apt 356, Arlington, VA 22206",1. Not live,,,March 2026,
+Elizabeth Zimmerman,OT,PA,Y,June,15,"356 Lee Ave, Pittsburgh, PA 15237",2. Pending 1st,30,15,March 2026,Small caseload to start; after-school + Saturdays; summer burst
+Jenny Thomas,SLP,PA,Y,July,10,"318 Palton Road, Bensalem, PA 19020",1. Not live,20,10,March 2026,Optimizing for full caseload; early intervention focus; moving to VA in May
+Alejandra De Santiago,SLP,Chicago,Y,May,10,"6144 W 64th St, Chicago, IL 60638",2. Pending 1st,30,5,March 2026,Ready – We don't have Illinois as a contracted credential yet 
+Anna Burke,SLP,Chicago,Y,May,20,"14944 Cog Hill Lane, Homer Glen, IL 60491",2. Pending 1st,75,25,March 2026,Open all areas of Chicago and Cook County flexible 
+Cierra Calloway,OT,Other VA,Y,June,10,"1653 Helmsdale Dr., Forest/Lynchburg, VA 24551",2. Pending 1st,25,12,March 2026,Only Thursday and Friday are to start
+Dru Filter,SLP,VA Beach,,August,10,"371 Phyllis Court, Virginia Beach, VA 23452",1. Not live,,10,March 2026,
+Hannah Schroyer,SLP,RVA,Y,August,10,"904 State St. Richmond, VA 23231",1. Not live,,12,March 2026,"Have not aligned with her, and it looks like origin has not started her credentialing. "
+Julie Mills,SLP,VA Beach,Y,June,20,"2113 Beckman Cove, Virginia Beach, VA 23454",2. Pending 1st,20,8,March 2026,"Need to confirm with her on availabilities, assuming she'll want to work at the summertime"
+Kayla Lang,OT,Chicago,Y,June,10,"2056 W. 75th Place, Chicago, IL 60620",2. Pending 1st,30,5,March 2026,Have not aligned on start date or case load. No responses from this provider to align. We don't have Illinois as a contracted credential yet
+Marissa Anderson,OT,VA Beach,Y,June,5,"501 Trent Ave, Chesapeake, VA 23323",2. Pending 1st,30,12,March 2026,Have not aligned on caseload expectations explicitly yet. Need to re-confirm her start date. On workers' comp till Mid May
+Nina Lee,OT,Chicago,Y,June,10,"1305 S Michigan Ave Apt 1208, Chicago, IL 60605",2. Pending 1st,20,10,March 2026,Would like to have cluster of customers in a zone to prevent wasteful driving
+Rolanda Petit-Bois,SLP,RVA,Y,May,5,"18 West Broad Street K, Richmond, VA 23220",2. Pending 1st,30,9,March 2026,Have not aligned on start date or case load. Using credentialing dates  – Have not confirmed when she's ready to start
+Asya Krengauz,SLP,Chicago,,July,5,"227 Augusta Drive, Vernon Hills, IL 60061",,,,April 2026,
+Lindsey Casco,SLP,Denver,,June,10,"Centennial, CO - No Address",1. Not live,,12,April 2026,Have not aligned on caseload expectations explicitly yet. 
+Laurelle Foster,SLP,Denver,,June,15,"Denver, CO - No Address",1. Not live,,7,April 2026,
+Marshel Johnson Fall,SLP,NOVA,Y,May,30,"Woodbridge, VA",2. Pending 1st,,,April 2026,Full caseload by July (latest Aug 1); 6 days/week goal
+Camille Brooks,SLP,NOVA,,June,10,"Sandy Springs, MD",1. Not live,,,April 2026,
+Breanna Gardner,SLP,NOVA,,June,10,"Arlington, VA",1. Not live,,,April 2026,Have not aligned on caseload expectations explicitly yet. She hasn't submitted the credentialing form
+Melanie Bielski,SLP,NOVA,,June,10,"McLean, VA",1. Not live,,,April 2026,"Does not have clear expectations, has a flexible schedule, open to weekends, week days, and evenings. Does not have rigid needs or goals.  4–10 hrs/week;"
+Maimunah Jafer,SLP,NOVA,,July,30,"5411 Castle Bar Lane, Alexandria, VA 22315",1. Not live,,,April 2026,Have not discussed caseload expectations or explicit start date
+Cassandra Osborne,SLP,NOVA,,June,10,"2800 Clarendon Blvd Apt W423, Arlington, VA 22201",1. Not live,,,April 2026,
+Emili Husain,OT,NOVA,,June,20,"39 N Bedford St 4, Arlington, VA 22201",,,,April 2026,
+Ada Martin,SLP,NOVA,,August,10,"Silver Spring, MD",1. Not live,,,April 2026,
+Meredith Crowley,PT,NOVA,,September,15,"6732 Tapps Ford Rd , Amissville, VA 20106",1. Not live,,,April 2026,
+Orin Frazier,OT,PA,N,September,25,"1337 Rothley Ave, Abington, PA 19001",1. Not live,,,April 2026,13 Wk. travel job till Sept. Will be more ready near then
+Marcia Darbouze,SLP,RVA,,June,5,"2028 West Cary St 2, Richmond, Virginia 23220",,,,April 2026,
+Claudia Gonzales,SLP,Chicago,,June,10,"4937 W. Pensacola Ave, Chicago, IL 60641",1. Not live,,6,April 2026,
+Elizabeth Forgey Stafford,SLP,VA Beach,Y,May,10,"1905 Severance Court, Virginia Beach, VA 23453",1. Not live,25,10,April 2026,Fri/Sat to start; goal 30 hrs/week within 1 year
+Hannah Davidson,SLP,Chicago,,June,10,"Oswego, IL - No Address",1. Not live,,12,April 2026,
+Henry Lopez,OT,Chicago,Y,June,20,"2338 S. Leavitt St, Chicago, IL 60608",2. Pending 1st,,4,April 2026,Need to re-confirm his caseload capacity Ready – We don't have Illinois as a contracted credential yet 
+Jasmine Jenkins,OT,Chicago,Y,July,20,"25737 S Hoover Ct, Monee, IL 60449",2. Pending 1st,30,10,April 2026,
+Krystal Patrick,SLP,RVA,,July,5,"18213 red barn court , moseley, VA 23120",1. Not live,,,April 2026,
+Lindsay Delmont,SLP,VA Beach,Y,May,10,"2306 Pinnacle Arch, Williamsburg, VA 23188",2. Pending 1st,20,8,April 2026,
+Madison Ku,PT,Chicago,,June,10,"1400 S Michigan Ave Apt 602, Chicago, IL 60605",1. Not live,,6,April 2026,
+Mallory McGovern,SLP,Chicago,,June,20,"2647 N Washtenaw Ave Apt 2S, Chicago, IL 60647",1. Not live,,6,April 2026,
+Payton Yates,SLP,RVA,,June,25,"4505 Seminary Ave, Richmond, VA 23227",1. Not live,,8,April 2026,
+Polly Toner,OT,Chicago,,June,15,"559 W Surf St. #201, Chicago, IL 60657",1. Not live,,6,April 2026,
+Salonia Anderson,OT,Chicago,,June,10,"131 Bowman Street, Matteson, IL 60443",1. Not live,,12,April 2026,
+Taylor Dunnahoo,SLP,RVA,Y,July,10,"4516 Cochise Trail, North Chesterfield, VA 23237",1. Not live,30,10,April 2026,Only Thursday and Friday are to start
+Vanessa Atter,OT,Chicago,Y,June,20,"4334 N Kimball Ave, Chicago, IL 60618",2. Pending 1st,,4,April 2026,
+Emily Ribaric,PT,NOVA,,July,5,,,,,May 2026,
+Maureen Auger,OT,NOVA,,June,10,,,,,May 2026,
+Lauryn Sullivan,SLP,Chicago,,,,"2930 North Sheridan Road Apt 806, Chicago, Illinois 60657",,,,May 2026,
+Annie Govea,SLP,Chicago,,,,"802 Highland Road , Frankfort, IL 60423",,,,May 2026,
+Maeve Devlin,SLP,NOVA,,July,30,"8024 Grandview Ct, Springfield, Virginia 22153",,,,May 2026,
+Emily Wheeler,OT,RVA,,June,5,"6703 Galaxie Road, Henrico, Virginia 23228",,,,May 2026,
+Rhonda Coleman,SLP,VA Beach,,July,3,"408 Big Pine Drive, Virginia Beach, Virginia 23452",,,,May 2026,
+Kristen Stewart,SLP,NOVA,,August,2,"4869 Tobacco Way  , Woodbridge , Virginia  22193",,,,May 2026,
+Taylor Brumfield,OT,FL,,June,6,"2801 NW 112th Ave, Plantation, Florida 33323",,,,May 2026,
+Romy Keuwo,SLP,Chicago,Y,June,10,"2246 S. Whipple St Apt 2F, Chicago, IL 60623",,,,May 2026,
+Kaylah Johnson,SLP,PA,,June,15,"7949 Ridge Ave Apt D05, Philadelphia , PA 19128",,,,May 2026,

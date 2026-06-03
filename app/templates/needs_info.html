@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block body %}
+<a class="navlink" href="/">&larr; Dashboard</a>
+<div style="margin-top:14px">
+  <div class="eyebrow">Needs info</div>
+  <h1 style="font-size:32px;margin-top:6px">Patients not ready to route</h1>
+  <p class="lede">These patients are missing at least one of the three things we need before matching:
+    a location we can map, a known service, or a billing type. The missing field is flagged so staff can fill it,
+    then they flow into routing on the next run.</p>
+</div>
+<div class="tablewrap" style="margin-top:18px">
+  <table>
+    <thead><tr><th>Patient</th><th>Service</th><th>Location</th><th>Missing</th><th>Outreach draft</th></tr></thead>
+    <tbody>
+    {% for r in rows %}
+      <tr>
+        <td><b>{{ r.name }}</b></td>
+        <td>{{ r.service }}</td>
+        <td>{{ r.city }}{% if r.state %}, {{ r.state }}{% endif %}{% if not r.city and not r.state %}<span class="meta">unknown</span>{% endif %}</td>
+        <td>{% for m in r.missing %}<span class="pill miss">{{ m }}</span>{% endfor %}</td>
+        <td style="max-width:340px">
+          {% if r.outreach %}
+            <div id="d{{ r.id }}" style="font-size:13px;line-height:1.45;background:#f6f8f8;border:1px solid #e3e8e8;border-radius:8px;padding:9px 11px;color:#243">{{ r.outreach }}</div>
+            <button type="button" class="btn" style="padding:5px 11px;font-size:12px;margin-top:6px"
+              onclick="navigator.clipboard.writeText(document.getElementById('d{{ r.id }}').innerText);this.innerText='Copied'">Copy</button>
+          {% else %}<span class="meta">&mdash;</span>{% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+<p class="note">{{ rows|length }} patients waiting on more information.</p>
+{% endblock %}
