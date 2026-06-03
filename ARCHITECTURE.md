@@ -21,9 +21,7 @@
 
 ---
 
-## Full system diagram (always visible)
-
-This block renders in any editor (no special preview needed).
+## Full system diagram
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -141,7 +139,7 @@ This block renders in any editor (no special preview needed).
 
 ---
 
-## Matching pipeline (step by step)
+## Matching pipeline
 
 | Step | What happens | Data used |
 |------|----------------|-----------|
@@ -288,7 +286,7 @@ Without this step, every patient’s active offer went to the **single nearest**
 
 ---
 
-## Provider profile (what staff see)
+## Provider profile
 
 1. **Active offers only** (48h) — sorted by distance, then score.  
 2. **Preferred** patients appear above provides-only patients.  
@@ -336,7 +334,7 @@ Medplum sync ──► Matching engine (rules only) ──► Tasks / dashboard
 
 ---
 
-## Mermaid diagrams (for slides / GitHub preview)
+## Mermaid diagrams
 
 If your viewer supports Mermaid, these mirror the ASCII diagram above.
 
@@ -376,7 +374,3 @@ flowchart TB
 </details>
 
 ---
-
-## One sentence (elevator pitch)
-
-**Filter on clinical and operational fit first, geocode second, rank preferred cases above eligible-only cases, offer three providers with a 48-hour clock and Pending-1st priority, and track caseload through Fill-80% to full capacity — all backed by live Medplum data.**
