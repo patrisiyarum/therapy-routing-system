@@ -84,6 +84,14 @@ Copy `.env.example` to `.env` and add your own rotated keys.
 
 ---
 
+## Architecture
+
+Full system design (Medplum target, matching pipeline, queues, fair Pending 1st
+split, rebalance, and what is built today): **[ARCHITECTURE.md](ARCHITECTURE.md)** at
+the repo root.
+
+---
+
 ## Project layout
 
 ```
@@ -101,6 +109,7 @@ app/
   templates/    dashboard, provider profile, needs-info
 data/           the local store lives here (created on first upload)
 sample_data/    your two files, ready to upload
+ARCHITECTURE.md matching pipeline, Medplum mapping, built vs planned
 ```
 
 ---
