@@ -78,10 +78,11 @@ This block renders in any editor (no special preview needed).
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │ ⑤ THREE-PROVIDER QUEUE (per patient)                                       │
 │    Pick top 3 from ranked list (Pending 1st favored)                          │
-│    #1 ACTIVE (requested) — provider sees patient — 48h to accept            │
-│    #2, #3 ON HOLD — activate if #1 declines or times out                    │
+│    #1 ACTIVE — fair split among Pending 1st in ~20 mi band (fewest pending) │
+│    #2, #3 ON HOLD — next best from ranked list                              │
+│    #1 has 48h to accept; decline/timeout → activate #2, then #3             │
 │    Accept → caseload +1, cancel other offers, update lifecycle              │
-│    All 3 exhausted → manual review                                          │
+│    All 3 exhausted → manual review · Rebalance rebuilds open offers         │
 └─────────────────────────────────────────────────────────────────────────────┘
                                       │
                                       ▼
@@ -246,6 +247,29 @@ Queue:      ┌──────────┐  ┌─────────
 - Only **#1** appears on the provider’s profile until they act.  
 - **Self-pay** patients can appear in more providers’ queues (not blocked by network).
 
+### Pending 1st fair distribution (built)
+
+Without this step, every patient’s active offer went to the **single nearest** Pending 1st provider (e.g. 90+ pending on one person while peers had none).
+
+**Rule for active offer (#1 only):**
+
+1. Build the eligible ranked list (lifecycle → schedule → distance → score).  
+2. Among **Pending 1st** providers in that list, find the closest distance.  
+3. Consider all Pending 1st within **20 miles** of that closest match (config: `PENDING_FIRST_BALANCE_BAND_MI`).  
+4. Assign the active offer to whoever has the **fewest** current pending (`requested`) offers; tie-break by distance, then score.  
+5. Slots **#2 and #3** still follow rank order (backups), not the fair-split rule.
+
+**Example (NOVA speech, three Pending 1st):** after rebalance, active offers split roughly evenly (~76 / 77 / 78) instead of ~92 / 78 / 66 on one therapist.
+
+**Rebalance** (`POST /rebalance`, dashboard button **Rebalance pending offers**):
+
+- Cancels all open `requested` and `on-hold` tasks (reason: `rebalanced`).  
+- Re-runs matching with current rules.  
+- Does **not** exclude those providers on the next pass (only **declined** or **completed** placements count as “already tried”).  
+- Use after rule changes or when queues look unfair; re-upload also rebuilds from scratch.
+
+**Capacity note:** pending suggestions do **not** consume capacity slots — only **accepted** (completed) tasks count toward full / at-capacity. A provider can show many pending offers while still below stated capacity.
+
 ---
 
 ## Provider lifecycle and capacity
@@ -303,6 +327,10 @@ Medplum sync ──► Matching engine (rules only) ──► Tasks / dashboard
 | Telehealth path | No |
 | Preferred before provides-only in rank | **No** |
 | 3-provider queue + 48h | Yes |
+| Pending 1st fair active-offer split (~20 mi band) | Yes |
+| Rebalance open offers (dashboard button) | Yes |
+| Pending offers block capacity | **No** — only accepted count |
+| Provider **Accepting** column on dashboard | Yes |
 | Lifecycle + fill 80% + at capacity | Yes |
 | Live Medplum API | No (CSV + local store) |
 
